@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Book;
 
 class BookController extends Controller
 {
@@ -12,7 +14,7 @@ class BookController extends Controller
         
         return view ('book/index', compact('books'));    //取得した値をビュー(book/index)に渡す
     }
-    public function edit($id)
+    public function edit($id)   //editアクションの定義
     {
         $books = Book::findOrFail($id);
 
