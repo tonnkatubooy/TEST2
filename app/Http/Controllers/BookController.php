@@ -14,10 +14,12 @@ class BookController extends Controller
         
         return view ('book/index', compact('books'));    //取得した値をビュー(book/index)に渡す
     }
-    public function edit($id)   //editアクションの定義
+    public function edit($id)
     {
-        $books = Book::findOrFail($id);
+      // DBよりURIパラメータと同じIDを持つBookの情報を取得
+        $book = Book::findOrFail($id);
 
-        return view('book/', compact('book'));
+      // 取得した値をビュー「book/edit」に渡す
+        return view('book/edit', compact('book'));
     }
 }

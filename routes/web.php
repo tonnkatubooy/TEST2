@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('book','BookController@index');
-Route::resource('book/edit', 'BookController');
+Route::resource('book', 'BookController');
