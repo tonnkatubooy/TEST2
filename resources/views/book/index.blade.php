@@ -1,5 +1,5 @@
-@extends('book/layout')  //部分テンプレートを引っ張ってくる(継承)
-@section('content')    //この部分はよくわからん
+@extends('book/layout')  
+@section('content')   
 <div class="container ops-main">
 <div class="row">
   <div class="col-md-12">

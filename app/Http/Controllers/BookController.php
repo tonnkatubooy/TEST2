@@ -18,6 +18,6 @@ class BookController extends Controller
     {
         $books = Book::findOrFail($id);
 
-        return view('book/edit', compact('book'));
+        return view('book/', compact('book'));
     }
 }
