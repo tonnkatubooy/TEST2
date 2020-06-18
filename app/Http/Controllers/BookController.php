@@ -57,7 +57,7 @@ class BookController extends Controller
         return view('book/create', compact('book'));
     }
 
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
         $book = new Book();
         $book->name = $request->name;
