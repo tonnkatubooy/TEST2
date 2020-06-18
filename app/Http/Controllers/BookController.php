@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Book;
+use App\Http\Requests\BookRequest;
+use App\Book;      //この部分は必要 エラーが出た
 
 class BookController extends Controller
 {
@@ -14,6 +14,7 @@ class BookController extends Controller
         
         return view ('book/index', compact('books'));    //取得した値をビュー(book/index)に渡す
     }
+    //editアクション
     public function edit($id)
     {
       // DBよりURIパラメータと同じIDを持つBookの情報を取得
@@ -22,7 +23,17 @@ class BookController extends Controller
       // 取得した値をビュー「book/edit」に渡す
         return view('book/edit', compact('book'));
     }
-    public function update(Request $request, $id)    //updateアクション
+    // public function store(BookRequest $request)
+    // {
+    //     $book = new Book();
+    //     $book->name = $request->name;
+    //     $book->price = $request->price;
+    //     $book->author = $request->author;
+    //     $book->save();
+
+    //     return redirect("/book");
+    // }
+    public function update(BookRequest $request, $id)    //updateアクション
     {
         $book = Book::findOrFail($id);
         $book->name = $request->name;
@@ -40,12 +51,12 @@ class BookController extends Controller
         return redirect("/book");
     }
     public function create()
-{
+    {
     // 空の$bookを渡す
     $book = new Book();
         return view('book/create', compact('book'));
     }
-    
+
     public function store(Request $request)
     {
         $book = new Book();
@@ -57,3 +68,4 @@ class BookController extends Controller
         return redirect("/book");
     }
 }
+
